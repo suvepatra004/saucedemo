@@ -74,7 +74,7 @@ class GoogleSheetReporter implements Reporter {
       }
 
       updates.push({
-        range: `'${this.sheetName}'!D${rowNumber}:E${rowNumber}`,
+        range: `'${this.sheetName}'!C${rowNumber}:D${rowNumber}`,
         values: [[result.status, result.executedAt]],
       });
     }
