@@ -11,6 +11,7 @@
     "@types/node": "^26.6.6"
   },
   "dependencies": {
+    "dotenv": "^18.0.10",
     "googleapis": "^189.0.0"
   }
 }
