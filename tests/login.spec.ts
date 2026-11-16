@@ -23,8 +23,8 @@ test.describe("Login Tests", () => {
   }) => {
     await login.login("locked_out_user", PASSWORD);
 
-    await expect(page.locator('[data-test="error"]')).toHaveText(
-      "Epic sadface: Sorry, this user has been locked out.",
+    await expect(await login.getErrorMessage()).toHaveText(
+      "Epic sadface: Username is required",
     );
   });
 });

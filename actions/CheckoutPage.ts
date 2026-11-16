@@ -1,45 +1,25 @@
-import { Page } from "@playwright/test";
-import * as checkoutPageLocators from "../locators/checkoutPageLocator.ts";
+import type { Page } from "@playwright/test";
+import checkoutPageLocators from "../locators/checkoutPageLocator";
 
-type LocatorMap = Record<string, unknown>;
-
-export class CheckoutPage {
-  private readonly locators = checkoutPageLocators as LocatorMap;
-
+export default class CheckoutPage {
   constructor(private readonly page: Page) {}
-
-  private getLocator(names: string[], fallback: string) {
-    const key = names.find((name) => this.locators[name] !== undefined);
-    const selector = key ? this.locators[key] : fallback;
-    return this.page.locator(
-      typeof selector === "string" ? selector : fallback,
-    );
-  }
 
   async enterCheckoutInformation(
     firstName: string,
     lastName: string,
     postalCode: string,
   ): Promise<void> {
-    await this.getLocator(
-      ["firstNameInput", "firstName", "FIRST_NAME"],
-      '[data-test="firstName"]',
-    ).fill(firstName);
-    await this.getLocator(
-      ["lastNameInput", "lastName", "LAST_NAME"],
-      '[data-test="lastName"]',
-    ).fill(lastName);
-    await this.getLocator(
-      ["postalCodeInput", "zipCodeInput", "postalCode", "POSTAL_CODE"],
-      '[data-test="postalCode"]',
-    ).fill(postalCode);
+    await this.page
+      .locator(checkoutPageLocators.firstNameInput)
+      .fill(firstName);
+    await this.page.locator(checkoutPageLocators.lastNameInput).fill(lastName);
+    await this.page
+      .locator(checkoutPageLocators.postalCodeInput)
+      .fill(postalCode);
   }
 
   async continueToOverview(): Promise<void> {
-    await this.getLocator(
-      ["continueButton", "CONTINUE_BUTTON"],
-      '[data-test="continue"]',
-    ).click();
+    await this.page.locator(checkoutPageLocators.continueButton).click();
   }
 
   async completeCheckout(
@@ -52,39 +32,22 @@ export class CheckoutPage {
   }
 
   async finishOrder(): Promise<void> {
-    await this.getLocator(
-      ["finishButton", "FINISH_BUTTON"],
-      '[data-test="finish"]',
-    ).click();
+    await this.page.locator(checkoutPageLocators.finishButton).click();
   }
 
   async cancelCheckout(): Promise<void> {
-    await this.getLocator(
-      ["cancelButton", "CANCEL_BUTTON"],
-      '[data-test="cancel"]',
-    ).click();
+    await this.page.locator(checkoutPageLocators.cancelButton).click();
   }
 
   async returnToProducts(): Promise<void> {
-    await this.getLocator(
-      ["backHomeButton", "BACK_HOME_BUTTON"],
-      '[data-test="back-to-products"]',
-    ).click();
+    await this.page.locator(checkoutPageLocators.backToProductsButton).click();
   }
 
   async getErrorMessage(): Promise<string> {
-    return this.getLocator(
-      ["errorMessage", "ERROR_MESSAGE"],
-      '[data-test="error"]',
-    ).innerText();
+    return this.page.locator(checkoutPageLocators.errorMessage).innerText();
   }
 
   async getOrderConfirmation(): Promise<string> {
-    return this.getLocator(
-      ["completeHeader", "orderConfirmation", "COMPLETE_HEADER"],
-      ".complete-header",
-    ).innerText();
+    return this.page.locator(checkoutPageLocators.completionHeader).innerText();
   }
 }
-
-export default CheckoutPage;

@@ -1,4 +1,4 @@
-const checkoutPageLocator = {
+const checkoutPageLocators = {
   // Checkout: Your Information
   checkoutTitle: ".title",
   firstNameInput: '[data-test="firstName"]',
@@ -27,4 +27,4 @@ const checkoutPageLocator = {
   backToProductsButton: '[data-test="back-to-products"]',
 };
 
-module.exports = checkoutPageLocator;
+export default checkoutPageLocators;
