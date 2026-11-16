@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import * as checkoutPageLocators from "../locators/checkoutPageLocator.js";
+import * as checkoutPageLocators from "../locators/checkoutPageLocator.ts";
 
 type LocatorMap = Record<string, unknown>;
 
