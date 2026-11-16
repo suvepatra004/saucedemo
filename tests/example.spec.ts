@@ -8,6 +8,7 @@ test("[TC_01] Verify successful login with valid credentials (standard_user)", a
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
+
 test("[TC_02] Verify login rejection with locked out user error banner", async ({
   page,
 }) => {
@@ -16,6 +17,7 @@ test("[TC_02] Verify login rejection with locked out user error banner", async (
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
+
 test("[TC_03] Verify login behavior and visual asset glitches for problem user", async ({
   page,
 }) => {
@@ -24,6 +26,7 @@ test("[TC_03] Verify login behavior and visual asset glitches for problem user",
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
+
 test("[TC_04] Verify login under simulated latency with performance glitch user", async ({
   page,
 }) => {
@@ -32,6 +35,7 @@ test("[TC_04] Verify login under simulated latency with performance glitch user"
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
+
 test("[TC_05] Verify validation error when username is empty", async ({
   page,
 }) => {
