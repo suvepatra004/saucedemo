@@ -5,5 +5,4 @@ const loginPageLocators = {
   errorMessage: '[data-test="error"]',
 };
 
-module.exports = loginPageLocators;
-// export default { usernameInput, passwordInput, loginButton, errorMessage };
+export default loginPageLocators;
