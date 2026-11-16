@@ -13,27 +13,29 @@ const productPageLocators = {
   inventoryItemDescription: ".inventory_item_desc",
   inventoryItemPrice: ".inventory_item_price",
 
-  addToCartButton: (productName) => {
+  addToCartButton: (productName: string): string => {
     const slug = productName
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
+
     return `[data-test="add-to-cart-${slug}"]`;
   },
 
-  removeButton: (productName) => {
+  removeButton: (productName: string): string => {
     const slug = productName
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
+
     return `[data-test="remove-${slug}"]`;
   },
 
-  productNameText: (productName) =>
+  productNameText: (productName: string): string =>
     `//div[contains(@class, 'inventory_item_name') and normalize-space()="${productName}"]`,
 
-  productCard: (productName) =>
+  productCard: (productName: string): string =>
     `//div[contains(@class, 'inventory_item') and .//div[contains(@class, 'inventory_item_name') and normalize-space()="${productName}"]]`,
 };
 
-module.exports = productPageLocators;
+export default productPageLocators;
