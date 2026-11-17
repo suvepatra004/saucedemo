@@ -2,6 +2,8 @@
 
 End-to-end test automation for [SauceDemo](https://www.saucedemo.com/) using Playwright and TypeScript, with test execution results integrated into Google Sheets.
 
+> [My Google Sheet](https://docs.google.com/spreadsheets/d/1cgTOWx-AxSDf2oAjdgtPZXbNW7pqhQ_SeTU4vc2QaoE/edit?usp=sharing)
+
 ## Tech Stack
 
 - **Language:** TypeScript
